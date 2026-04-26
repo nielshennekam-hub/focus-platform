@@ -22,7 +22,7 @@ ergotherapie­praktijk, met keuzemenu en doorschakeling, binnen een budget van
 
 ## 2. Provider­keuze
 
-### Aanbeveling: **Voys**
+### Vastgesteld: **Voys**
 
 - Nederlandse VoIP-aanbieder, sterk in keuzemenu's en flexibele belstromen.
 - Tekent een **verwerkers­overeenkomst** (AVG) en data staat in NL.
@@ -245,8 +245,7 @@ buiten budget. Praktische tussenoplossing:
 
 ## 11. Vervolgbeslissingen
 
-1. Akkoord op **Voys** als provider, of eerst een offerte bij een
-   alternatief opvragen?
+1. ~~Akkoord op **Voys** als provider~~ — **akkoord** (26-04-2026).
 2. IVR-teksten zelf inspreken of laten doen door een voice-over (± € 50
    eenmalig)?
 3. Welke mailbox wordt gebruikt voor voicemail-to-email? (i.v.m. AVG)
