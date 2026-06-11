@@ -1,10 +1,21 @@
-# 🧬 Blueprint Coach
+# 🧬 Blueprint Coach + 🧘 Klank Timer
 
-Een installeerbare PWA die je elke dag stimuleert om de juiste leefstijlkeuzes te maken — gebaseerd op de nieuwste publieke inzichten van Bryan Johnson (Blueprint-protocol, stand 2026).
+Eén installeerbare PWA met twee apps die elkaar aanvullen:
+
+1. **Blueprint Coach** — dagelijkse leefstijlcoach gebaseerd op de nieuwste publieke inzichten van Bryan Johnson (Blueprint-protocol, stand 2026).
+2. **Klank Timer** (`meditatie.html`) — meditatietimer in de stijl van Insight Timer, met het geluid van klankschalen en een meditatietracker.
 
 > *"Elke dag begint de avond ervoor."*
 
-## Wat de app doet
+## 🧘 Klank Timer
+
+- **Vijf klankschalen** — grote Tibetaanse schaal, Tibetaanse schaal, kristallen schaal, gong en zen-bel. De klanken worden **live gesynthetiseerd met de Web Audio API** (inharmonische boventonen met zweving, zoals een echte schaal) — geen audiobestanden, dus volledig offline en supersnel.
+- **Timer** — duur van 3 tot 60 minuten of *open einde*, optionele beginbel, intervalbellen (elke 1/2/5/10 min) en drie rustige eindslagen. Ademhalingsanimatie tijdens de sessie en wake-lock zodat je scherm aan blijft.
+- **Tracker (Inzicht)** — dagen-streak, totaal aantal minuten, aantal sessies, 14-daagse grafiek in minuten en je recente sessies.
+
+Je vindt de timer via het 🧘-tabblad in de Coach (en andersom via het 🧬-tabblad terug).
+
+## Wat de Coach doet
 
 - **Vandaag** — dagelijkse checklist met 11 gewoontes in drie categorieën (🌙 Slaap, 🥦 Voeding, 🏃 Beweging), elk met een uitklapbare onderbouwing. Een dagscore-ring, streak-teller en confetti bij een perfecte dag.
 - **Protocol** — de kern van Blueprint helder uitgelegd: slaap als prioriteit nr. 1, vroeg & plantaardig eten, dagelijks gevarieerd trainen, en de "Don't die"-mindset. Inclusief de 2026-updates (NMN naar 6 dagen/week, rapamycine geschrapt).
