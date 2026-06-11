@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Blueprint Coach — dagelijkse leefstijlcoach gebaseerd op de nieuwste inzichten van Bryan Johnson. Slaap, voeding en beweging.">
+  <meta name="theme-color" content="#0b1220">
+  <title>Blueprint Coach — Leef langer, elke dag</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="app">
+
+    <!-- ===== Kop ===== -->
+    <header class="app-header">
+      <div class="header-top">
+        <div>
+          <p class="greeting" id="greeting">Goedemorgen</p>
+          <h1 class="app-title">Blueprint <span>Coach</span></h1>
+        </div>
+        <div class="bedtime-chip" id="bedtime-chip" title="Tijd tot je bedtijd">
+          <span class="chip-icon">🌙</span>
+          <span id="bedtime-countdown">–</span>
+        </div>
+      </div>
+      <blockquote class="quote-card" id="quote-card">
+        <p id="quote-text"></p>
+        <cite id="quote-author"></cite>
+      </blockquote>
+    </header>
+
+    <!-- ===== Tabbladen ===== -->
+    <main>
+      <!-- Vandaag -->
+      <section class="view active" id="view-vandaag">
+        <div class="score-panel">
+          <div class="score-ring-wrap">
+            <svg class="score-ring" viewBox="0 0 120 120" role="img" aria-label="Dagscore">
+              <circle class="ring-bg" cx="60" cy="60" r="52"/>
+              <circle class="ring-fill" id="ring-fill" cx="60" cy="60" r="52"/>
+            </svg>
+            <div class="score-center">
+              <span class="score-value" id="score-value">0%</span>
+              <span class="score-label">dagscore</span>
+            </div>
+          </div>
+          <div class="score-side">
+            <p class="score-message" id="score-message">Begin met één kleine keuze.</p>
+            <div class="streak-badge" id="streak-badge">
+              <span class="flame">🔥</span>
+              <span><strong id="streak-count">0</strong> dagen streak</span>
+            </div>
+          </div>
+        </div>
+
+        <div id="habit-groups"></div>
+      </section>
+
+      <!-- Protocol -->
+      <section class="view" id="view-protocol">
+        <h2 class="view-title">Het Protocol</h2>
+        <p class="view-intro">De nieuwste inzichten uit Bryan Johnsons Blueprint (2026), vertaald naar haalbare dagelijkse keuzes. Geen extremen nodig — de basis levert het meeste op.</p>
+        <div id="protocol-cards"></div>
+        <p class="disclaimer">⚕️ Dit is geen medisch advies. Overleg met een arts voordat je supplementen neemt of je leefstijl drastisch wijzigt.</p>
+      </section>
+
+      <!-- Voortgang -->
+      <section class="view" id="view-voortgang">
+        <h2 class="view-title">Voortgang</h2>
+        <div class="stats-row">
+          <div class="stat-card"><span class="stat-value" id="stat-streak">0</span><span class="stat-label">huidige streak</span></div>
+          <div class="stat-card"><span class="stat-value" id="stat-best">0</span><span class="stat-label">beste streak</span></div>
+          <div class="stat-card"><span class="stat-value" id="stat-avg">0%</span><span class="stat-label">gem. 7 dagen</span></div>
+        </div>
+        <h3 class="subsection-title">Laatste 14 dagen</h3>
+        <div class="history-chart" id="history-chart"></div>
+        <h3 class="subsection-title">Per categorie (7 dagen)</h3>
+        <div id="category-bars"></div>
+      </section>
+
+      <!-- Instellingen -->
+      <section class="view" id="view-instellingen">
+        <h2 class="view-title">Instellingen</h2>
+        <div class="settings-card">
+          <label class="setting-row">
+            <span>Je naam</span>
+            <input type="text" id="setting-name" placeholder="bijv. Niels" maxlength="30">
+          </label>
+          <label class="setting-row">
+            <span>Bedtijd</span>
+            <input type="time" id="setting-bedtime" value="22:00">
+          </label>
+          <label class="setting-row">
+            <span>Einde eetvenster</span>
+            <input type="time" id="setting-eatend" value="18:00">
+          </label>
+          <label class="setting-row toggle-row">
+            <span>Bedtijd-herinnering<br><small>Melding 1 uur vóór bedtijd (wind-down)</small></span>
+            <input type="checkbox" id="setting-notify">
+          </label>
+        </div>
+        <div class="settings-card">
+          <h3 class="subsection-title">Gewoontes aan/uit</h3>
+          <div id="habit-toggles"></div>
+        </div>
+        <button class="danger-btn" id="reset-data">Alle gegevens wissen</button>
+        <p class="about-note">Blueprint Coach v1 · Gebaseerd op publiek beschikbare inzichten van Bryan Johnson. Niet gelieerd aan Blueprint.</p>
+      </section>
+    </main>
+
+    <!-- ===== Navigatie ===== -->
+    <nav class="tab-bar">
+      <button class="tab active" data-view="vandaag"><span class="tab-icon">☀️</span>Vandaag</button>
+      <button class="tab" data-view="protocol"><span class="tab-icon">🧬</span>Protocol</button>
+      <button class="tab" data-view="voortgang"><span class="tab-icon">📈</span>Voortgang</button>
+      <button class="tab" data-view="instellingen"><span class="tab-icon">⚙️</span>Meer</button>
+    </nav>
+
+    <div class="toast" id="toast" role="status"></div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
