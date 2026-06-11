@@ -2,7 +2,7 @@ name: Deploy naar GitHub Pages
 
 on:
   push:
-    branches: [claude/longevity-pwa-app-79q3a9]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
