@@ -151,6 +151,32 @@ body {
 .protocol-card li::marker { color: var(--accent); }
 .disclaimer { font-size: 0.78rem; color: var(--text-dim); margin: 8px 4px 0; }
 
+/* uitklapbare recept- en trainingskaarten */
+.section-gap { margin-top: 28px; }
+.fold-card {
+  background: var(--card); border: 1px solid var(--card-edge);
+  border-radius: var(--radius); margin-bottom: 10px; overflow: hidden;
+}
+.fold-card summary {
+  list-style: none; cursor: pointer; -webkit-tap-highlight-color: transparent;
+  display: flex; align-items: center; gap: 12px; padding: 14px 16px;
+}
+.fold-card summary::-webkit-details-marker { display: none; }
+.fold-card summary::after {
+  content: "▾"; margin-left: auto; color: var(--text-dim);
+  transition: transform 0.2s; flex-shrink: 0;
+}
+.fold-card[open] summary::after { transform: rotate(180deg); }
+.fold-icon { font-size: 1.3rem; }
+.fold-title { font-weight: 600; font-size: 0.93rem; }
+.fold-tag { display: block; font-weight: 400; font-size: 0.76rem; color: var(--text-dim); }
+.fold-body { padding: 0 16px 14px; color: var(--text-dim); font-size: 0.88rem; }
+.fold-body ul { padding-left: 18px; margin-top: 8px; }
+.fold-body li { margin-bottom: 5px; }
+.fold-body li::marker { color: var(--accent); }
+.fold-prep { margin-top: 10px; font-style: italic; }
+.training-tips { margin-top: 14px; border-left-color: #f472b6; }
+
 /* ===== Voortgang ===== */
 .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px; }
 .stat-card {

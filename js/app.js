@@ -247,6 +247,34 @@ function renderProtocol() {
       <h3>${card.icon} ${card.title}</h3>
       <ul>${card.points.map(p => `<li>${p}</li>`).join("")}</ul>
     </div>`).join("");
+
+  document.getElementById("meal-cards").innerHTML = MEALS.map(m => `
+    <details class="fold-card">
+      <summary>
+        <span class="fold-icon">${m.icon}</span>
+        <span class="fold-title">${m.name}<span class="fold-tag">${m.time}</span></span>
+      </summary>
+      <div class="fold-body">
+        <p>${m.desc}</p>
+        <ul>${m.ingredients.map(i => `<li>${i}</li>`).join("")}</ul>
+        <p class="fold-prep">👨‍🍳 ${m.prep}</p>
+      </div>
+    </details>`).join("");
+
+  document.getElementById("training-cards").innerHTML = TRAINING_WEEK.map(d => `
+    <details class="fold-card">
+      <summary>
+        <span class="fold-icon">📅</span>
+        <span class="fold-title">${d.day} — ${d.focus}<span class="fold-tag">${d.duration}</span></span>
+      </summary>
+      <div class="fold-body">
+        <ul>${d.items.map(i => `<li>${i}</li>`).join("")}</ul>
+      </div>
+    </details>`).join("");
+
+  document.getElementById("training-tips").innerHTML = `
+    <h3>💡 Bryans trainingsregels</h3>
+    <ul>${TRAINING_TIPS.map(t => `<li>${t}</li>`).join("")}</ul>`;
 }
 
 /* ---------- voortgang ---------- */
