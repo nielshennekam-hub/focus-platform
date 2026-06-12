@@ -177,6 +177,38 @@ body {
 .fold-prep { margin-top: 10px; font-style: italic; }
 .training-tips { margin-top: 14px; border-left-color: #f472b6; }
 
+/* ===== Trainingsblokken met activiteit-iconen ===== */
+.train-legend { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.legend-item {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 5px 11px;
+  background: var(--card); border: 1px solid var(--card-edge); border-radius: 999px;
+  font-size: 0.72rem; font-weight: 600; color: var(--text-dim);
+}
+.legend-ico { display: inline-flex; }
+.legend-ico svg { width: 14px; height: 14px; }
+
+.day-icons { display: flex; gap: 5px; margin-left: auto; flex-shrink: 0; }
+.day-icons span { display: inline-flex; }
+.day-icons svg { width: 15px; height: 15px; }
+#training-cards .fold-card summary::after { margin-left: 8px; }
+
+.train-block {
+  display: flex; gap: 12px;
+  padding: 11px 0; border-bottom: 1px solid var(--card-edge);
+}
+.train-block:last-child { border-bottom: none; padding-bottom: 2px; }
+.train-ico {
+  width: 36px; height: 36px; flex-shrink: 0; border-radius: 11px;
+  display: flex; align-items: center; justify-content: center;
+}
+.train-ico svg { width: 19px; height: 19px; }
+.train-main { flex: 1; min-width: 0; }
+.train-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+.train-head strong { color: var(--text); font-size: 0.9rem; }
+.train-time { font-size: 0.78rem; color: var(--text-dim); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.train-desc { font-size: 0.84rem; color: var(--text-dim); margin-top: 2px; }
+
 /* ===== Voortgang ===== */
 .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px; }
 .stat-card {

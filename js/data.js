@@ -281,79 +281,123 @@ const MEALS = [
    De Blueprint-trainingsweek — Bryans officiële schema voor
    thuis, met concrete oefeningen, sets en herhalingen.
    ±6 uur per week over de vijf pijlers.
+   Elk blok heeft een type met eigen icoon en kleur.
    ============================================================ */
+
+const TRAIN_TYPES = {
+  warmup: {
+    label: "Warming-up", color: "#fb923c",
+    svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c.5 4-4.5 5.5-4.5 10a4.5 4.5 0 0 0 9 0c0-1.6-.7-3-1.8-4.4-.3 1.1-1 2-1.9 2.6C12.6 9.4 11.4 6.5 12 3z"/></svg>',
+  },
+  strength: {
+    label: "Kracht", color: "#f87171",
+    svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 10v4M6.5 7.5v9M17.5 7.5v9M20.5 10v4M6.5 12h11"/></svg>',
+  },
+  zone2: {
+    label: "Zone 2-cardio", color: "#4ade80",
+    svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19.3 12.9 12 20l-7.3-7.1a4.8 4.8 0 1 1 7.3-6.2 4.8 4.8 0 1 1 7.3 6.2z"/></svg>',
+  },
+  hiit: {
+    label: "HIIT", color: "#fbbf24",
+    svg: '<svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M13 2 5 13.5h6L9.5 22 19 10h-6V2z"/></svg>',
+  },
+  interval: {
+    label: "Noors 4×4", color: "#c084fc",
+    svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13.5" r="6.5"/><path d="M12 10.5v3l2 1.5M10 2.5h4M12 2.5V5"/></svg>',
+  },
+  mobility: {
+    label: "Mobiliteit & stretch", color: "#38bdf8",
+    svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4H4v5M15 4h5v5M9 20H4v-5M15 20h5v-5"/></svg>',
+  },
+  balance: {
+    label: "Balans", color: "#f472b6",
+    svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4.5" r="1.8"/><path d="M12 6.5V13M7 9.5h10M12 13v7M12 13l3.5 2.5"/></svg>',
+  },
+  stability: {
+    label: "Stabiliteit & core", color: "#5eead4",
+    svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 2.8v5.4c0 4.3-2.9 7.2-7 9-4.1-1.8-7-4.7-7-9V5.8z"/></svg>',
+  },
+  cooldown: {
+    label: "Cooldown", color: "#7c8cf8",
+    svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M5.1 8l13.8 8M18.9 8 5.1 16"/></svg>',
+  },
+  recovery: {
+    label: "Actief herstel", color: "#34d399",
+    svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 19.5C6.5 10 13 4.5 20 4.5 20 14 14.5 19 8 19c-.5 0-1 0-1.5.5z"/><path d="M6.5 19.5C9 14 12.5 10.5 16.5 8"/></svg>',
+  },
+};
 const TRAINING_WEEK = [
   {
     day: "Maandag",
     focus: "Full-body kracht + rustige cardio",
     duration: "±55 min",
-    items: [
-      "<strong>5 min</strong> — Warming-up: losdraaien, lichte squats, armzwaaien",
-      "<strong>20 min</strong> — Kracht (60–90 sec rust tussen sets): squats 3×10–15 · push-ups 3×8–12 (op knieën mag) · eenarmig roeien met dumbbell 3×10–12 per arm · kettlebell swings of farmer's walk 3×30 sec · plank 3×20–30 sec",
-      "<strong>25 min</strong> — Zone 2-cardio: stevig wandelen, fietsen of zwemmen (praat-test: praten moet nog lukken)",
-      "<strong>5 min</strong> — Cooldown: rustig uitlopen en stretchen",
+    blocks: [
+      { type: "warmup",   time: "5 min",  desc: "Losdraaien, lichte squats, armzwaaien." },
+      { type: "strength", time: "20 min", desc: "Squats 3×10–15 · push-ups 3×8–12 (op knieën mag) · eenarmig roeien met dumbbell 3×10–12 per arm · kettlebell swings of farmer's walk 3×30 sec · plank 3×20–30 sec. Rust 60–90 sec tussen sets." },
+      { type: "zone2",    time: "25 min", desc: "Stevig wandelen, fietsen of zwemmen. Praat-test: praten moet nog lukken." },
+      { type: "cooldown", time: "5 min",  desc: "Rustig uitlopen en stretchen." },
     ],
   },
   {
     day: "Dinsdag",
     focus: "Korte HIIT + zone 2-cardio",
     duration: "±50 min",
-    items: [
-      "<strong>10 min</strong> — Warming-up: rustig inlopen of fietsen, tempo geleidelijk omhoog",
-      "<strong>4 min</strong> — HIIT: 8 × (20 sec voluit / 20 sec rust) — fiets, sprint of touwspringen",
-      "<strong>30 min</strong> — Zone 2-cardio op gesprekstempo (60–70% van je maximale hartslag)",
-      "<strong>5 min</strong> — Cooldown en stretchen",
+    blocks: [
+      { type: "warmup",   time: "10 min", desc: "Rustig inlopen of fietsen, tempo geleidelijk omhoog." },
+      { type: "hiit",     time: "4 min",  desc: "8 × (20 sec voluit / 20 sec rust) — fiets, sprint of touwspringen." },
+      { type: "zone2",    time: "30 min", desc: "Op gesprekstempo, 60–70% van je maximale hartslag." },
+      { type: "cooldown", time: "5 min",  desc: "Uitlopen en stretchen." },
     ],
   },
   {
     day: "Woensdag",
     focus: "Kracht + mobiliteit/yoga",
     duration: "±60 min",
-    items: [
-      "<strong>5 min</strong> — Warming-up",
-      "<strong>25 min</strong> — Kracht: zelfde blok als maandag, of varieer de oefeningen",
-      "<strong>25 min</strong> — Yoga of mobiliteit: heupen, rug, enkels, hamstrings, schouders",
-      "<strong>5 min</strong> — Balans: op één been staan, 30–60 sec per been — ook eens met ogen dicht",
+    blocks: [
+      { type: "warmup",   time: "5 min",  desc: "Losdraaien en lichte oefeningen." },
+      { type: "strength", time: "25 min", desc: "Zelfde blok als maandag, of varieer de oefeningen." },
+      { type: "mobility", time: "25 min", desc: "Yoga of mobiliteit: heupen, rug, enkels, hamstrings, schouders." },
+      { type: "balance",  time: "5 min",  desc: "Op één been staan, 30–60 sec per been — ook eens met ogen dicht." },
     ],
   },
   {
     day: "Donderdag",
     focus: "HIIT-intervallen",
     duration: "±30 min",
-    items: [
-      "<strong>8 min</strong> — Warming-up, tempo rustig opbouwen",
-      "<strong>16–20 min</strong> — 8–10 × (60 sec hard op ±90% HFmax / 60 sec rustig actief herstel)",
-      "<strong>5 min</strong> — Cooldown: kort maar zwaar vandaag — dit is de sessie die je VO₂max het hardst opdrijft",
+    blocks: [
+      { type: "warmup",   time: "8 min",      desc: "Tempo rustig opbouwen." },
+      { type: "hiit",     time: "16–20 min",  desc: "8–10 × (60 sec hard op ±90% HFmax / 60 sec rustig actief herstel). Kort maar zwaar — dé VO₂max-sessie." },
+      { type: "cooldown", time: "5 min",      desc: "Rustig uitlopen." },
     ],
   },
   {
     day: "Vrijdag",
     focus: "Full-body kracht + stabiliteit",
     duration: "±50 min",
-    items: [
-      "<strong>5 min</strong> — Warming-up",
-      "<strong>25 min</strong> — Kracht (60–90 sec rust tussen sets): lunges 3×10–12 per been · overhead press 3×10–12 · chest press met dumbbells 3×10–12 · step-ups 3×10 per been · side planks 20–30 sec per kant",
-      "<strong>10 min</strong> — Stabiliteit: single-leg deadlift 2×8 per been · bird dog 2×10 · dead bug 2×10",
-      "<strong>5 min</strong> — Stretchen",
+    blocks: [
+      { type: "warmup",    time: "5 min",  desc: "Losdraaien en lichte oefeningen." },
+      { type: "strength",  time: "25 min", desc: "Lunges 3×10–12 per been · overhead press 3×10–12 · chest press met dumbbells 3×10–12 · step-ups 3×10 per been · side planks 20–30 sec per kant. Rust 60–90 sec tussen sets." },
+      { type: "stability", time: "10 min", desc: "Single-leg deadlift 2×8 per been · bird dog 2×10 · dead bug 2×10." },
+      { type: "mobility",  time: "5 min",  desc: "Stretchen tot besluit." },
     ],
   },
   {
     day: "Zaterdag",
     focus: "Noors 4×4-protocol (VO₂max)",
     duration: "±40 min",
-    items: [
-      "<strong>10 min</strong> — Warming-up: rustig opbouwen tot zone 2",
-      "<strong>25 min</strong> — 4 × (4 min hard op 85–95% HFmax + 3 min rustig op 60–70%) — hardlopen, fietsen of roeien; de gouden standaard voor je conditie",
-      "<strong>5 min</strong> — Cooldown",
+    blocks: [
+      { type: "warmup",   time: "10 min", desc: "Rustig opbouwen tot zone 2." },
+      { type: "interval", time: "25 min", desc: "4 × (4 min hard op 85–95% HFmax + 3 min rustig op 60–70%) — hardlopen, fietsen of roeien. De gouden standaard voor je conditie." },
+      { type: "cooldown", time: "5 min",  desc: "Rustig uitlopen." },
     ],
   },
   {
     day: "Zondag",
     focus: "Actief herstel",
     duration: "35–50 min",
-    items: [
-      "<strong>30–45 min</strong> — Wandelen, rustige yoga of zwemmen — of Bryans weekendfavorieten: hiken, pickleball, fietsen",
-      "<strong>5 min</strong> — Balans en lichte stretching tot besluit",
+    blocks: [
+      { type: "recovery", time: "30–45 min", desc: "Wandelen, rustige yoga of zwemmen — of Bryans weekendfavorieten: hiken, pickleball, fietsen." },
+      { type: "balance",  time: "5 min",     desc: "Balans en lichte stretching tot besluit." },
     ],
   },
 ];
