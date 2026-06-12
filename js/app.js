@@ -442,7 +442,19 @@ document.addEventListener("visibilitychange", () => {
   }
 });
 
-/* service worker */
+/* service worker + automatische update: zodra een nieuwe versie
+   actief wordt, herlaadt de app zichzelf één keer zodat je direct
+   de nieuwste inhoud ziet (geen dubbele herstart meer nodig) */
 if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => navigator.serviceWorker.register("sw.js"));
+  window.addEventListener("load", () =>
+    navigator.serviceWorker.register("sw.js", { updateViaCache: "none" }));
+
+  let hadController = !!navigator.serviceWorker.controller;
+  let refreshed = false;
+  navigator.serviceWorker.addEventListener("controllerchange", () => {
+    if (!hadController) { hadController = true; return; } // allereerste installatie
+    if (refreshed) return;
+    refreshed = true;
+    location.reload();
+  });
 }
