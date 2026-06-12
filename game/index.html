@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+  <meta name="description" content="Webslinger — slinger als een spin van flat naar flat in 3D. Een mobiele minigame van Blueprint Coach.">
+  <meta name="theme-color" content="#0b1220">
+  <title>Webslinger — slinger van flat naar flat</title>
+  <link rel="icon" href="../icons/icon-192.png">
+  <link rel="apple-touch-icon" href="../icons/icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <style>
+    :root {
+      --bg: #0b1220;
+      --card: rgba(22, 33, 58, 0.92);
+      --card-edge: #22304f;
+      --text: #e8edf7;
+      --text-dim: #93a1bd;
+      --accent: #5eead4;
+      --accent-2: #7c8cf8;
+      --danger: #f87171;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      touch-action: none;
+      -webkit-user-select: none;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    #game { position: fixed; inset: 0; width: 100%; height: 100%; display: block; }
+
+    /* ===== HUD ===== */
+    #hud {
+      position: fixed;
+      top: calc(10px + env(safe-area-inset-top, 0px));
+      left: 0; right: 0;
+      display: flex; justify-content: space-between;
+      padding: 0 14px;
+      pointer-events: none;
+      z-index: 5;
+    }
+    .chip {
+      background: var(--card);
+      border: 1px solid var(--card-edge);
+      border-radius: 999px;
+      padding: 7px 14px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      backdrop-filter: blur(6px);
+    }
+    .chip small { color: var(--text-dim); font-weight: 600; margin-right: 5px; }
+    #hint {
+      position: fixed;
+      left: 0; right: 0;
+      bottom: calc(26px + env(safe-area-inset-bottom, 0px));
+      text-align: center;
+      color: var(--text);
+      font-size: 0.92rem;
+      font-weight: 600;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+      pointer-events: none;
+      z-index: 5;
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+    #hint.show { opacity: 0.95; }
+
+    /* ===== Overlays ===== */
+    .overlay {
+      position: fixed; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(7, 11, 22, 0.62);
+      backdrop-filter: blur(3px);
+      z-index: 10;
+      padding: 20px;
+    }
+    .overlay.hidden { display: none; }
+    .panel {
+      width: 100%; max-width: 420px;
+      background: var(--card);
+      border: 1px solid var(--card-edge);
+      border-radius: 22px;
+      padding: 26px 24px calc(22px + env(safe-area-inset-bottom, 0px) / 2);
+      text-align: center;
+      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.55);
+    }
+    .panel h1 {
+      font-size: 1.9rem; font-weight: 800; letter-spacing: -0.02em;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .panel .sub { color: var(--text-dim); margin: 4px 0 18px; font-size: 0.95rem; }
+    .howto {
+      list-style: none; text-align: left;
+      display: grid; gap: 10px;
+      margin-bottom: 22px;
+      font-size: 0.93rem; color: var(--text);
+    }
+    .howto li { display: flex; gap: 10px; align-items: flex-start; line-height: 1.45; }
+    .howto b { color: var(--accent); }
+    .big-btn {
+      width: 100%;
+      border: none; cursor: pointer;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      color: #081021;
+      font-size: 1.1rem; font-weight: 800;
+      padding: 15px;
+      border-radius: 14px;
+      font-family: inherit;
+    }
+    .big-btn:active { transform: scale(0.98); }
+    .record { margin-top: 14px; color: var(--text-dim); font-size: 0.9rem; font-weight: 600; }
+    .back {
+      position: fixed;
+      top: calc(12px + env(safe-area-inset-top, 0px));
+      left: 14px;
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 0.9rem; font-weight: 600;
+      background: var(--card);
+      border: 1px solid var(--card-edge);
+      border-radius: 999px;
+      padding: 7px 14px;
+    }
+    /* Game over */
+    #go-dist { font-size: 2.6rem; font-weight: 800; margin: 6px 0 2px; }
+    #go-dist small { font-size: 1.2rem; color: var(--text-dim); font-weight: 700; }
+    #go-record { min-height: 1.4em; font-weight: 700; color: var(--text-dim); margin-bottom: 18px; }
+    #go-record.new { color: var(--accent); }
+    #gameover h1 { color: var(--danger); -webkit-text-fill-color: var(--danger); background: none; }
+    .tap-note { margin-top: 12px; color: var(--text-dim); font-size: 0.88rem; }
+  </style>
+</head>
+<body>
+  <canvas id="game"></canvas>
+
+  <div id="hud">
+    <span class="chip"><small>afstand</small><span id="dist">0 m</span></span>
+    <span class="chip"><small>record</small><span id="best">0 m</span></span>
+  </div>
+  <div id="hint">👆 Houd vast = web schieten &nbsp;·&nbsp; loslaten = vliegen</div>
+
+  <!-- Startscherm -->
+  <div class="overlay" id="menu">
+    <a class="back" href="../">← Blueprint Coach</a>
+    <div class="panel">
+      <h1>🕸️ Webslinger</h1>
+      <p class="sub">Slinger als een spin van flat naar flat</p>
+      <ul class="howto">
+        <li><span>👆</span><span><b>Houd het scherm vast</b> om een web aan een flat te schieten — je slingert eraan mee.</span></li>
+        <li><span>↔️</span><span><b>Linker- of rechterhelft</b> van het scherm bepaalt aan welke kant je web grijpt.</span></li>
+        <li><span>🕊️</span><span><b>Laat los</b> op het juiste moment om hoog en ver door de lucht te vliegen.</span></li>
+        <li><span>💥</span><span>Raak de straat niet — hoe verder je komt, hoe hoger je score.</span></li>
+      </ul>
+      <button class="big-btn" id="start-btn">▶&nbsp; Spelen</button>
+      <p class="record" id="menu-best"></p>
+    </div>
+  </div>
+
+  <!-- Game over -->
+  <div class="overlay hidden" id="gameover">
+    <div class="panel">
+      <h1>💥 Gecrasht!</h1>
+      <div id="go-dist">0 <small>m</small></div>
+      <p id="go-record"></p>
+      <button class="big-btn" id="retry-btn">↻&nbsp; Opnieuw slingeren</button>
+      <p class="tap-note">…of tik ergens op het scherm</p>
+    </div>
+  </div>
+
+  <script type="module" src="game.js"></script>
+</body>
+</html>

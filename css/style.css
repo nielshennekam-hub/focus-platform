@@ -277,6 +277,21 @@ body {
 .setting-row input[type="checkbox"]:checked { background: rgba(94,234,212,0.35); }
 .setting-row input[type="checkbox"]:checked::after { transform: translateX(20px); background: var(--accent); }
 
+.game-card {
+  display: flex; align-items: center; gap: 14px;
+  background: var(--card); border: 1px solid var(--card-edge);
+  border-radius: var(--radius); padding: 14px 16px; margin-bottom: 16px;
+  color: var(--text); text-decoration: none;
+}
+.game-card .game-emoji { font-size: 1.6rem; }
+.game-card .game-text { flex: 1; font-size: 0.95rem; }
+.game-card .game-text strong {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.game-card .game-text small { color: var(--text-dim); }
+.game-card .game-arrow { color: var(--text-dim); font-size: 1.4rem; }
+
 .danger-btn {
   width: 100%; padding: 14px;
   background: rgba(248,113,113,0.1); border: 1px solid rgba(248,113,113,0.4);
