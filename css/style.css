@@ -269,7 +269,6 @@ body {
 }
 .tab-icon { font-size: 1.25rem; }
 .tab.active { color: var(--accent); background: rgba(94,234,212,0.08); }
-a.tab { text-decoration: none; }
 
 /* ===== Toast ===== */
 .toast {

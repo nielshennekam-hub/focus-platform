@@ -77,7 +77,7 @@ const HABITS = [
     id: "training",
     cat: "beweging",
     title: "Vandaag getraind (zie trainingsweek)",
-    why: "Bryan traint 6–8 uur per week — dagelijks 30 min kracht + 30 min cardio — volgens vijf pijlers: kracht, zone 2-cardio, intensieve cardio, mobiliteit en balans. “Regelmatig bewegen verlaagt het risico op overlijden met 31%.” Begin met één pijler; het weekschema staat op het Protocol-tabblad.",
+    why: "Bryan traint 6–8 uur per week — dagelijks 30 min kracht + 30 min cardio — volgens vijf pijlers: kracht, zone 2-cardio, intensieve cardio, mobiliteit en balans. “Regelmatig bewegen verlaagt het risico op overlijden met 31%.” Begin met één pijler; het weekschema staat op het Training-tabblad.",
   },
   {
     id: "namaaltijd",
@@ -178,7 +178,7 @@ const PROTOCOL = [
       "Cardio: 150 min zone 2 per week (praat-test: kun je nog praten, dan zit je goed) + 75 min intensief op 80–90% van je maximale hartslag, bijv. het Noorse 4×4.",
       "Dagelijks 5–10 min mobiliteit (heupen, rug, enkels, hamstrings, schouders) en balansoefeningen — op één been staan, ook eens met ogen dicht.",
       "Bryan zelf traint 6–8 u/week: elke dag 30 min kracht + 30 min cardio, met mobiliteit en balans verspreid over de dag.",
-      "Elke 30 minuten zitten doorbreken; na elke maaltijd 5–10 min wandelen (drukt je glucosepiek). Begin met één pijler — consistentie telt, niet perfectie. Weekschema hieronder. 👇",
+      "Elke 30 minuten zitten doorbreken; na elke maaltijd 5–10 min wandelen (drukt je glucosepiek). Begin met één pijler — consistentie telt, niet perfectie. Het volledige weekschema staat op het 🏋️ Training-tabblad.",
     ],
   },
   {
