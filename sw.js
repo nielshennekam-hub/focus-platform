@@ -1,7 +1,7 @@
 /* Blueprint Coach — service worker
    Cache-first voor de app-shell, zodat de app volledig offline werkt. */
 
-const CACHE = "focus-platform-v6";
+const CACHE = "focus-platform-v7";
 const ASSETS = [
   "./",
   "./index.html",

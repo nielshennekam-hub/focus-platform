@@ -261,14 +261,27 @@ function renderProtocol() {
       </div>
     </details>`).join("");
 
+  document.getElementById("train-legend").innerHTML = Object.values(TRAIN_TYPES).map(t => `
+    <span class="legend-item"><span class="legend-ico" style="color:${t.color}">${t.svg}</span>${t.label}</span>`).join("");
+
   document.getElementById("training-cards").innerHTML = TRAINING_WEEK.map(d => `
     <details class="fold-card">
       <summary>
-        <span class="fold-icon">📅</span>
         <span class="fold-title">${d.day} — ${d.focus}<span class="fold-tag">${d.duration}</span></span>
+        <span class="day-icons">${d.blocks.map(b => `<span style="color:${TRAIN_TYPES[b.type].color}">${TRAIN_TYPES[b.type].svg}</span>`).join("")}</span>
       </summary>
       <div class="fold-body">
-        <ul>${d.items.map(i => `<li>${i}</li>`).join("")}</ul>
+        ${d.blocks.map(b => {
+          const t = TRAIN_TYPES[b.type];
+          return `
+          <div class="train-block">
+            <span class="train-ico" style="color:${t.color};background:${t.color}1f">${t.svg}</span>
+            <div class="train-main">
+              <div class="train-head"><strong>${t.label}</strong><span class="train-time">${b.time}</span></div>
+              <p class="train-desc">${b.desc}</p>
+            </div>
+          </div>`;
+        }).join("")}
       </div>
     </details>`).join("");
 
