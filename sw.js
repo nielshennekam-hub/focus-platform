@@ -1,7 +1,7 @@
 /* Focus Platform (Blueprint Coach + Klank Timer) — service worker
    Cache-first voor de app-shell, zodat de apps volledig offline werken. */
 
-const CACHE = "focus-platform-v2";
+const CACHE = "focus-platform-v3";
 const ASSETS = [
   "./",
   "./index.html",

@@ -17,8 +17,8 @@ Je vindt de timer via het 🧘-tabblad in de Coach (en andersom via het 🧬-tab
 
 ## Wat de Coach doet
 
-- **Vandaag** — dagelijkse checklist met 11 gewoontes in drie categorieën (🌙 Slaap, 🥦 Voeding, 🏃 Beweging), elk met een uitklapbare onderbouwing. Een dagscore-ring, streak-teller en confetti bij een perfecte dag.
-- **Protocol** — de kern van Blueprint helder uitgelegd: slaap als prioriteit nr. 1, vroeg & plantaardig eten, dagelijks gevarieerd trainen, en de "Don't die"-mindset. Inclusief de 2026-updates (NMN naar 6 dagen/week, rapamycine geschrapt).
+- **Vandaag** — dagelijkse checklist met 13 gewoontes in drie categorieën (🌙 Slaap, 🥦 Voeding, 🏃 Beweging), elk met een uitklapbare onderbouwing. Een dagscore-ring, streak-teller en confetti bij een perfecte dag.
+- **Protocol** — de kern van Blueprint helder uitgelegd: slaap als prioriteit nr. 1, vroeg & plantaardig eten, de vijf trainings­pijlers en de "Don't die"-mindset. Inclusief de 2026-updates (NMN naar 6 dagen/week, rapamycine geschrapt, lithium/NDGA erbij). Plus twee uitklapbare secties met Bryans actuele data: **Een dag eten als Bryan** (eiwitontbijt, Super Veggie, Nutty Pudding en de derde maaltijd, met officiële receptuur) en **De Blueprint-trainingsweek** (7-daags schema met concrete oefeningen, sets en herhalingen, incl. het Noorse 4×4-protocol).
 - **Voortgang** — 14-daagse grafiek, huidige & beste streak, 7-daags gemiddelde en scores per categorie.
 - **Instellingen** — naam, eigen bedtijd, einde eetvenster, gewoontes aan/uit en een optionele wind-down-melding 1 uur vóór bedtijd.
 
