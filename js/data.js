@@ -8,6 +8,7 @@ const CATEGORIES = {
   slaap:    { name: "Slaap",    icon: "🌙", color: "#7c8cf8" },
   voeding:  { name: "Voeding",  icon: "🥦", color: "#4ade80" },
   beweging: { name: "Beweging", icon: "🏃", color: "#fbbf24" },
+  focus:    { name: "Focus & verbinding", icon: "🧠", color: "#f472b6" },
 };
 
 /* Dagelijkse gewoontes. "why" is de inspirerende onderbouwing
@@ -76,7 +77,7 @@ const HABITS = [
     id: "training",
     cat: "beweging",
     title: "Vandaag getraind (zie trainingsweek)",
-    why: "Bryan traint 6 dagen per week 60–90 min volgens vijf pijlers: kracht, zone 2-cardio, intensieve cardio (HIIT), mobiliteit en balans. “Regelmatig bewegen verlaagt het risico op overlijden met 31%.” Het concrete weekschema staat op het Protocol-tabblad.",
+    why: "Bryan traint 6–8 uur per week — dagelijks 30 min kracht + 30 min cardio — volgens vijf pijlers: kracht, zone 2-cardio, intensieve cardio, mobiliteit en balans. “Regelmatig bewegen verlaagt het risico op overlijden met 31%.” Begin met één pijler; het weekschema staat op het Protocol-tabblad.",
   },
   {
     id: "namaaltijd",
@@ -96,6 +97,26 @@ const HABITS = [
     title: "Daglicht & buitenlucht gepakt",
     why: "Ochtendlicht zet je biologische klok gelijk en maakt je bedtijd 's avonds makkelijker. In het weekend kiest Bryan voor wandelen, hiken of tennis — buiten zijn telt dubbel.",
   },
+
+  // ---- Focus & verbinding — uit "8 Steps to Reclaim Your Life" (feb 2026) ----
+  {
+    id: "schermdiscipline",
+    cat: "focus",
+    title: "Telefoon bewust gebruikt, niet gescrold",
+    why: "Bryan noemt feeds “ultrabewerkte content” en je smartphone “een gokkast in je broekzak” — net zo ontworpen om je verslaafd te houden als junkfood. Beperk afleiding zoals je suiker beperkt: bewust, met grenzen.",
+  },
+  {
+    id: "verbinding",
+    cat: "focus",
+    title: "Echt contact met iemand gehad",
+    why: "Chronische eenzaamheid is volgens Bryan net zo schadelijk als ongeveer een pakje sigaretten per dag. Een goed gesprek, samen eten of een belletje met aandacht telt — een feed scrollen niet.",
+  },
+  {
+    id: "belofte",
+    cat: "focus",
+    title: "Eén kleine belofte aan jezelf nagekomen",
+    why: "Zijn alternatief voor motivatievideo's: self-trust. Kies één klein ding, doe het vandaag, en morgen weer — óók als het saai of oncomfortabel is. Zo bouw je het vertrouwen op waarmee grotere beloftes haalbaar worden.",
+  },
 ];
 
 /* Inspirerende quotes — vertaald, met origineel gedachtegoed. */
@@ -112,6 +133,9 @@ const QUOTES = [
   { text: "Maak van je avondroutine een cadeau aan je ochtend-zelf.", author: "Blueprint-gedachte" },
   { text: "Regelmatig bewegen verlaagt het risico op overlijden — waar dan ook aan — met 31%.", author: "Bryan Johnson" },
   { text: "Ga met een lage hartslag naar bed en de nacht doet de rest.", author: "Bryan Johnson" },
+  { text: "Al het voedsel is schuldig tot het tegendeel bewezen is.", author: "Bryan Johnson" },
+  { text: "Stop met motivatie kijken. Kom één kleine belofte aan jezelf na — elke dag.", author: "Bryan Johnson" },
+  { text: "Elke eenheid VO₂max erbij is anderhalve maand extra leven.", author: "Blueprint-gedachte" },
 ];
 
 /* Protocol-uitleg (tab 2) — de nieuwste inzichten, beknopt. */
@@ -137,7 +161,9 @@ const PROTOCOL = [
       "Eetvenster van ±5:30 tot 12:00 — extreem vroege time-restricted eating. Begin zelf met: niet meer eten na het avondeten.",
       "±2.250 kcal per dag (±10% calorische restrictie): ±25% eiwit (130 g), 35% koolhydraten, 40% vet.",
       "Drie vaste maaltijden — eiwitontbijt, ‘Super Veggie’ en een wisselende derde maaltijd. De recepten staan hieronder. 👇",
-      "Veel olijfolie (±3 el/dag), bessen, noten, gefermenteerde groenten — nul alcohol, nul toegevoegde suiker.",
+      "Veel olijfolie (±3 el/dag), bessen, noten, gefermenteerde groenten — nul alcohol. Suiker: maximaal 20 g toegevoegd per dag (liefst 0); bewaar je ‘suikerbudget’ voor honing of polyfenolrijk fruit.",
+      "Geen dieet-ideologie: Blueprint is niet keto, vegan of paleo — per voedingsmiddel kijken wat het bewijs zegt. “Al het voedsel is schuldig tot het tegendeel bewezen is.”",
+      "Plan ál je maaltijden vooruit: één ‘onopgelost gat’ per dag is volgens Bryan precies waar het misgaat.",
       "2026-update supplementen: NMN terug naar 6 dagen/week, rapamycine geschrapt, lithium (lage dosis) en NDGA toegevoegd. Kern blijft: vitamine D, omega-3, creatine (5 g).",
     ],
   },
@@ -146,12 +172,24 @@ const PROTOCOL = [
     title: "Beweging: de vijf pijlers",
     color: "#fbbf24",
     points: [
-      "Bryans vijf pijlers (uit zijn recente video): ① krachttraining ② zone 2-cardio ③ intensieve cardio/HIIT ④ mobiliteit & flexibiliteit ⑤ balans.",
-      "“Regelmatig bewegen verlaagt het risico op overlijden — waar dan ook aan — met 31%.”",
-      "±6 uur per week: 4,5 u rustig-matig (zone 1–2), 1,5 u intensief, waarvan 3× HIIT.",
-      "Cardio doodt geen spiergroei — een betere conditie versterkt juist je krachttraining.",
-      "Elke 30 minuten zitten doorbreken; na elke maaltijd 5–10 min bewegen.",
-      "Weekend = actief plezier: hiken, pickleball, fietsen, klimmen. Het concrete weekschema staat hieronder. 👇",
+      "Bryans vijf pijlers (video “You're Exercising Wrong”, mei 2026): ① krachttraining ② zone 2-cardio ③ intensieve cardio (zone 4/5) ④ mobiliteit & flexibiliteit ⑤ balans. Hyperfocus op één vorm schaadt de rest.",
+      "De cijfers die hij noemt: bewegen verlaagt het sterfterisico met 31%, elke eenheid VO₂max-verbetering ≈ 45 dagen extra levensverwachting, en wie geen 10 seconden op één been kan staan heeft een fors hoger sterfterisico.",
+      "Minimum: 3× per week kracht met samengestelde oefeningen (duwen, trekken, squatten) en progressive overload — elke week iets meer gewicht of herhalingen.",
+      "Cardio: 150 min zone 2 per week (praat-test: kun je nog praten, dan zit je goed) + 75 min intensief op 80–90% van je maximale hartslag, bijv. het Noorse 4×4.",
+      "Dagelijks 5–10 min mobiliteit (heupen, rug, enkels, hamstrings, schouders) en balansoefeningen — op één been staan, ook eens met ogen dicht.",
+      "Bryan zelf traint 6–8 u/week: elke dag 30 min kracht + 30 min cardio, met mobiliteit en balans verspreid over de dag.",
+      "Elke 30 minuten zitten doorbreken; na elke maaltijd 5–10 min wandelen (drukt je glucosepiek). Begin met één pijler — consistentie telt, niet perfectie. Weekschema hieronder. 👇",
+    ],
+  },
+  {
+    icon: "📵",
+    title: "Aandacht & verbinding",
+    color: "#38bdf8",
+    points: [
+      "Uit “8 Steps to Reclaim Your Life” (feb 2026): smartphone-feeds zijn “ultrabewerkte content” — een gokkast in je broekzak. Beperk afleiding zoals je junkfood beperkt.",
+      "Chronische eenzaamheid is net zo schadelijk als ±een pakje sigaretten per dag. Investeer dagelijks in écht contact.",
+      "De motivatieval: inspirerende video's kijken vóélt als vooruitgang, maar verandert niets. Bouw self-trust: kom elke dag één kleine belofte aan jezelf na.",
+      "Doe moeilijke dingen — mensen zitten vast door comfort en excuusverhalen (“geen tijd”, “zo ben ik nu eenmaal”), niet door gebrek aan kennis.",
     ],
   },
   {
@@ -322,8 +360,11 @@ const TRAINING_WEEK = [
 const TRAINING_TIPS = [
   "Maak er een gewoonte van: train dagelijks op een vast moment, zonder erover te onderhandelen.",
   "Blessurepreventie gaat boven intensiteit — nette uitvoering eerst, dan pas zwaarder.",
-  "Progressieve overload: voer gewicht, herhalingen of tempo héél geleidelijk op.",
-  "Geen tijd? Het minimum dat al enorm loont: 3× kracht + 3× cardio per week, en elke 30 min even opstaan.",
+  "Progressive overload: elke week iets meer gewicht of herhalingen — houd het bij in een notitie of app.",
+  "Zone 2-controle: de praat-test. Kun je geen gesprek meer voeren, dan zit je te hoog; een hartslagmeter helpt.",
+  "Elke dag 5–10 min mobiliteit (heupen, rug, enkels, hamstrings, schouders) en even op één been staan — probeer het ook met je ogen dicht.",
+  "Bryans eigen verdeling (mei 2026): dagelijks 30 min kracht + 30 min cardio, 6–8 uur per week totaal.",
+  "Geen tijd? Begin met één pijler en bouw uit — consistentie verslaat perfectie.",
 ];
 
 /* Motiverende boodschap bij dagscore. */
