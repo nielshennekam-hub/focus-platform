@@ -409,7 +409,77 @@ const TRAINING_TIPS = [
   "Zone 2-controle: de praat-test. Kun je geen gesprek meer voeren, dan zit je te hoog; een hartslagmeter helpt.",
   "Elke dag 5–10 min mobiliteit (heupen, rug, enkels, hamstrings, schouders) en even op één been staan — probeer het ook met je ogen dicht.",
   "Bryans eigen verdeling (mei 2026): dagelijks 30 min kracht + 30 min cardio, 6–8 uur per week totaal.",
+  "Sessie te lang voor vandaag? Halveer alle blokken — een halve training verslaat altijd geen training.",
   "Geen tijd? Begin met één pijler en bouw uit — consistentie verslaat perfectie.",
+];
+
+/* ============================================================
+   Beginnersgids — voor wie (bijna) nooit getraind heeft.
+   ============================================================ */
+const BEGINNER_GUIDE = [
+  {
+    icon: "🌱",
+    title: "Je eerste 4 weken: rustig opbouwen",
+    points: [
+      "<strong>Week 1–2</strong> · 3 dagen, ±25 min: <strong>ma</strong> 5 min warming-up + 15 min kracht (squats 2×8 · push-ups op knieën of chest press-machine licht 2×6–8 · plank 2×15 sec) + 5 min rustig fietsen · <strong>wo</strong> 25 min zone 2 op fiets, crosstrainer of stevig wandelen (praat-test) · <strong>vr</strong> zelfde als maandag. In de gym zijn machines ideaal om te starten.",
+      "<strong>Week 3–4</strong>: kracht naar 3 sets en ±20 min, cardio naar 30–35 min, en voeg op zaterdag een wandeling van 45 min toe. Dagelijks 5 min stretchen.",
+      "<strong>Week 5 en verder</strong>: stap in delen over op het volledige weekschema — begin met de maandag en de zondag, en voeg elke week een dag toe.",
+      "HIIT en het Noorse 4×4 pas wanneer 30 min zone 2 comfortabel voelt. Intensiteit is de kers, niet de taart.",
+    ],
+  },
+  {
+    icon: "📐",
+    title: "Wat betekent 3×10? En HFmax?",
+    points: [
+      "<strong>3×10–15</strong> betekent: 3 sets (rondes) van 10–15 herhalingen, met 60–90 sec rust tussen de sets.",
+      "Gewicht kiezen: de laatste 2 herhalingen mogen zwaar voelen, maar je houding blijft netjes. Lukt dat niet → pak lichter.",
+      "<strong>HFmax</strong> (maximale hartslag) ≈ 220 − je leeftijd. Ben je 45, dan is 85–95% HFmax dus ±149–166 slagen per minuut.",
+      "Geen hartslagmeter? De praat-test is genoeg: <strong>zone 2</strong> = praten in volle zinnen lukt nog · <strong>intensief (zone 4/5)</strong> = alleen nog losse woorden.",
+      "<strong>Progressive overload</strong> = elke week een tikje meer: één herhaling extra, iets meer gewicht of een minuut langer.",
+    ],
+  },
+  {
+    icon: "🏋️",
+    title: "Zo gebruik je de sportschool slim",
+    points: [
+      "Vraag bij de start een (meestal gratis) intake of instructie en laat de oefeningen uit dit schema voordoen — dan zit je uitvoering meteen goed.",
+      "Machines zijn je vriend als beginner: <strong>leg press</strong>, <strong>chest press</strong>, <strong>seated row</strong> en <strong>shoulder press</strong> geleiden de beweging en zijn veiliger dan losse gewichten. Stap later over op dumbbells.",
+      "Gewicht kiezen: begin licht en zoek het gewicht waarbij de laatste 2 herhalingen zwaar maar netjes lukken. Noteer je instellingen (zadelhoogte, gewichtspin) voor de volgende keer.",
+      "Zone 2-cardio in de gym: fiets, crosstrainer of loopband met lichte helling. Voor HIIT en het Noorse 4×4 zijn de roeier, spinningfiets of loopband perfect.",
+      "Druk in de zaal? De dumbbellhoek plus één matje is genoeg voor dit hele schema. En thuis kan ook altijd: een rugzak met boeken vervangt de dumbbell.",
+    ],
+  },
+  {
+    icon: "🩹",
+    title: "Luister naar je lijf",
+    points: [
+      "Spierpijn 24–48 uur na een (eerste) training is normaal en gaat vanzelf over — licht blijven bewegen helpt juist.",
+      "Scherpe of stekende pijn tijdens een oefening: stoppen. Spiervermoeidheid mag branden, gewrichtspijn niet.",
+      "Ziek of koorts? Sla de training over. Herstel en slaap zijn óók training.",
+      "Onzeker over je hart, medicijnen of een oude blessure? Overleg eerst met je huisarts of fysiotherapeut — zeker vóór je met HIIT begint.",
+    ],
+  },
+];
+
+/* ============================================================
+   Oefeningenbibliotheek — elke oefening uit het weekschema
+   kort uitgelegd, met een makkelijkere variant.
+   ============================================================ */
+const EXERCISES = [
+  { name: "Squat", how: "Voeten op schouderbreedte, zak alsof je op een stoel gaat zitten tot je bovenbenen ongeveer horizontaal zijn. Rug recht, gewicht op je hielen, en duw jezelf weer omhoog.", gym: "Goblet squat met een dumbbell tegen je borst, of de leg press als veilige machinevariant.", easier: "Zak minder diep, of squat naar een echte stoel: ga zitten en sta weer op." },
+  { name: "Push-up (opdrukken)", how: "Handen iets breder dan je schouders, lichaam één rechte lijn van hoofd tot hielen. Zak tot je borst bijna de grond raakt en duw jezelf op.", gym: "Chest press-machine met licht gewicht traint dezelfde spieren, geleid en veilig.", easier: "Op je knieën, of staand tegen een muur of het aanrecht." },
+  { name: "Eenarmig roeien", how: "Steun met één hand op een bank, rug recht en bijna horizontaal. Trek de dumbbell in een rustige beweging naar je heup en laat hem gecontroleerd zakken.", gym: "Seated row-machine (zittend roeien) of de lat pulldown zijn prima beginnersvarianten.", easier: "Lichter gewicht en een kleinere beweging — het gaat om je rugspieren, niet om zwaaien." },
+  { name: "Kettlebell swing", how: "Voeten breed, duw je heupen naar achteren (geen squat) en zwaai de kettlebell met gestrekte armen tot borsthoogte door je heupen krachtig naar voren te strekken.", gym: "Vraag een instructeur de heupbeweging één keer voor te doen — dat voorkomt een zere rug. De roeimachine is een goed alternatief.", easier: "Vervang door de farmer's walk — die traint veilig dezelfde keten." },
+  { name: "Farmer's walk", how: "Pak in elke hand een dumbbell of kettlebell, schouders laag, rug recht, en loop 30 seconden rustig rond.", gym: "Pak twee dumbbells uit het rek; thuis werken volle tassen net zo goed.", easier: "Lichter gewicht of korter lopen — kaarsrecht blijven is het doel." },
+  { name: "Plank", how: "Onderarmen en tenen op de grond, lichaam één rechte lijn. Span je buik en billen aan en houd vast; niet doorzakken met je heupen.", easier: "Op je knieën, of korter vasthouden (10 sec) en iets vaker herhalen." },
+  { name: "Lunge (uitvalspas)", how: "Grote stap naar voren en zak tot beide knieën ongeveer 90 graden. Voorste knie boven je enkel, romp rechtop, en duw jezelf terug omhoog.", gym: "Met een lichte dumbbell in elke hand zodra het zonder soepel gaat.", easier: "Houd een stoel of de muur vast voor balans, en maak een kleinere stap." },
+  { name: "Overhead press", how: "Duw dumbbells vanaf schouderhoogte recht omhoog tot je armen gestrekt zijn, en laat ze rustig zakken. Buik aangespannen, niet doorbuigen in je onderrug.", gym: "De shoulder press-machine geleidt de beweging — ideaal om mee te beginnen.", easier: "Lichter gewicht, of duw één arm tegelijk." },
+  { name: "Chest press", how: "Liggend op een bank (of de grond): duw de gewichten vanaf borsthoogte recht omhoog en laat ze langzaam zakken.", gym: "Chest press-machine, of dumbbells op het vlakke bankje.", easier: "Op de grond liggen is de veilige variant — de vloer begrenst de beweging." },
+  { name: "Step-up", how: "Stap met één voet op een stevige verhoging, duw jezelf volledig omhoog en stap rustig en gecontroleerd terug.", gym: "Een verstelbaar bankje of plyo box; later met dumbbells in de hand. Thuis: de traptrede.", easier: "Lagere verhoging en eventueel ergens aan vasthouden." },
+  { name: "Side plank (zijplank)", how: "Lig op je zij, steun op je onderarm en de zijkant van je voet, en til je heup op tot je lichaam een rechte lijn is.", easier: "Laat je onderste knie op de grond rusten." },
+  { name: "Single-leg deadlift", how: "Sta op één been en kantel met rechte rug langzaam voorover terwijl je andere been naar achteren strekt. Kom rustig terug omhoog.", gym: "Met een lichte dumbbell of kettlebell in de hand tegenover je standbeen.", easier: "Houd met één hand een stoel of het rek vast en maak de beweging kleiner." },
+  { name: "Bird dog", how: "Op handen en knieën: strek tegelijk je rechterarm naar voren en je linkerbeen naar achteren, houd 2 seconden vast en wissel. Heupen blijven horizontaal.", easier: "Strek alleen een arm óf alleen een been tegelijk." },
+  { name: "Dead bug", how: "Op je rug, armen recht omhoog en knieën in 90 graden. Strek langzaam één arm en het tegenovergestelde been bijna tot de grond en wissel. Onderrug blijft de hele tijd op de grond gedrukt.", easier: "Beweeg alleen je benen en houd je armen stil omhoog." },
 ];
 
 /* Motiverende boodschap bij dagscore. */

@@ -261,6 +261,27 @@ function renderProtocol() {
       </div>
     </details>`).join("");
 
+  document.getElementById("beginner-cards").innerHTML = BEGINNER_GUIDE.map(g => `
+    <details class="fold-card">
+      <summary>
+        <span class="fold-icon">${g.icon}</span>
+        <span class="fold-title">${g.title}</span>
+      </summary>
+      <div class="fold-body">
+        <ul>${g.points.map(p => `<li>${p}</li>`).join("")}</ul>
+      </div>
+    </details>`).join("");
+
+  document.getElementById("exercise-cards").innerHTML = EXERCISES.map(x => `
+    <details class="fold-card exercise-card">
+      <summary><span class="fold-title">${x.name}</span></summary>
+      <div class="fold-body">
+        <p>${x.how}</p>
+        ${x.gym ? `<p class="exercise-alt">🏋️ In de gym: ${x.gym}</p>` : ""}
+        ${x.easier ? `<p class="exercise-easier">🟢 Makkelijker: ${x.easier}</p>` : ""}
+      </div>
+    </details>`).join("");
+
   document.getElementById("train-legend").innerHTML = Object.values(TRAIN_TYPES).map(t => `
     <span class="legend-item"><span class="legend-ico" style="color:${t.color}">${t.svg}</span>${t.label}</span>`).join("");
 
