@@ -1,7 +1,7 @@
 /* Blueprint Coach — service worker
    Cache-first voor de app-shell, zodat de app volledig offline werkt. */
 
-const VERSION = "v9";
+const VERSION = "v10";
 const CACHE = "focus-platform-" + VERSION;
 const ASSETS = [
   "./",
@@ -13,6 +13,10 @@ const ASSETS = [
   "./icons/icon-192.png",
   "./icons/icon-512.png",
   "./icons/icon-512-maskable.png",
+  "./game/",
+  "./game/index.html",
+  "./game/game.js",
+  "./game/vendor/three.module.min.js",
 ];
 
 self.addEventListener("install", (e) => {
