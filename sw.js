@@ -1,7 +1,8 @@
 /* Blueprint Coach — service worker
    Cache-first voor de app-shell, zodat de app volledig offline werkt. */
 
-const CACHE = "focus-platform-v7";
+const VERSION = "v8";
+const CACHE = "focus-platform-" + VERSION;
 const ASSETS = [
   "./",
   "./index.html",
@@ -15,7 +16,9 @@ const ASSETS = [
 ];
 
 self.addEventListener("install", (e) => {
-  e.waitUntil(caches.open(CACHE).then((c) => c.addAll(ASSETS)));
+  // ?v=… dwingt verse bestanden af langs de CDN-cache van GitHub Pages;
+  // bij ophalen matchen we met ignoreSearch, dus de query stoort niet
+  e.waitUntil(caches.open(CACHE).then((c) => c.addAll(ASSETS.map((a) => a + "?v=" + VERSION))));
   self.skipWaiting();
 });
 
